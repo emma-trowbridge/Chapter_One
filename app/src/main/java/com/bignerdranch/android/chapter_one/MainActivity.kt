@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar //added this for Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,19 +25,19 @@ class MainActivity : AppCompatActivity() {
         falseButton = findViewById(R.id.false_button)
 
         trueButton.setOnClickListener {
-            Toast.makeText(
-                this,
+            Snackbar.make( //switched from Toast.makeText to Snackbar.make(
+                it, //changed "this", to "it" - makes Snackbar anchor properly, doesn't work with "this"
                 R.string.correct,
-                Toast.LENGTH_LONG
+                Snackbar.LENGTH_LONG //duration, changed to Snackbar
             )
                 .show()
         }
 
-        falseButton.setOnClickListener {
-            Toast.makeText(
-                this,
+        falseButton.setOnClickListener { //made the same changes for false button:
+            Snackbar.make(
+                it,
                 R.string.incorrect,
-                Toast.LENGTH_LONG
+                Snackbar.LENGTH_LONG
             )
                 .show()
         }
